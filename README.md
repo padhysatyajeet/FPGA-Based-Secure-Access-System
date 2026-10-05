@@ -126,7 +126,7 @@ followed by carriage return and line feed.
 
 The BLE module handles the wireless Bluetooth communication; the FPGA communicates with the module using UART.
 
-#$OTP Verification and Lockout
+## OTP Verification and Lockout
 
 After receiving the OTP, the user enters the OTP through the keypad.
 
