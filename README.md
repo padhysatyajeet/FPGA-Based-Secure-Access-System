@@ -1,12 +1,12 @@
-FPGA-Based Secure Access System
+# FPGA-Based Secure Access System
 
-Overview
+## Overview
 
 This project implements a secure access system on a Xilinx Spartan-7 FPGA using Verilog HDL. The system uses a 4×4 matrix keypad for user input and generates a 6-character One-Time Password (OTP) using a ring-oscillator-based True Random Number Generator (TRNG).
 
 The generated OTP is transmitted through UART to an external BLE module, allowing the OTP to be communicated wirelessly. The system verifies the OTP entered through the keypad and provides access only when the complete OTP is correct.
 
-Features
+## Features
 
 - Implemented on a Xilinx Spartan-7 FPGA using Verilog HDL.
 - 4×4 matrix keypad interface for OTP input.
@@ -23,7 +23,7 @@ Features
 - Dedicated F-key soft reset for clearing the lockout state.
 - LED indicators for reset, successful access, failed verification, and lockout status.
 
-System Architecture
+## System Architecture
 
 The overall system consists of the following modules:
 
@@ -67,7 +67,7 @@ The overall system consists of the following modules:
                                       ↓
                                     LEDs
 
-TRNG-Based OTP Generation
+## TRNG-Based OTP Generation
 
 The TRNG uses three ring oscillators as physical entropy sources. Their outputs are synchronized to the FPGA clock and combined using XOR logic.
 
@@ -86,7 +86,7 @@ The total number of possible OTPs is:
 14^6 = 7,529,536
 ]
 
-Keypad Interface
+## Keypad Interface
 
 The system uses a 4×4 matrix keypad.
 
@@ -101,7 +101,7 @@ The keys are mapped to hexadecimal values:
 
 The "F" key is reserved for the soft-reset function.
 
-UART Communication
+## UART Communication
 
 The generated OTP is sent from the FPGA to an external BLE module using UART.
 
@@ -126,7 +126,7 @@ followed by carriage return and line feed.
 
 The BLE module handles the wireless Bluetooth communication; the FPGA communicates with the module using UART.
 
-OTP Verification and Lockout
+#$OTP Verification and Lockout
 
 After receiving the OTP, the user enters the OTP through the keypad.
 
@@ -148,7 +148,7 @@ System Locked
 
 The "F" key can be used to activate the soft reset and clear the lockout state.
 
-LED Status Indication
+## LED Status Indication
 
 The FPGA LEDs provide visual feedback for different system states:
 
@@ -157,7 +157,7 @@ The FPGA LEDs provide visual feedback for different system states:
 - Failure – incorrect OTP
 - Locked – maximum failed attempts reached
 
-Implementation
+## Implementation
 
 The design is written in Verilog HDL and implemented using Xilinx Vivado.
 
@@ -171,13 +171,13 @@ Major RTL modules include:
 - "keypad_reset.v" – F-key based soft reset
 - "keypad_ble_top.v" – top-level system integration
 
-Verification
+## Verification
 
 The individual RTL modules were simulated and verified using Verilog testbenches and waveform analysis. The complete design was implemented on the Spartan-7 FPGA using Vivado.
 
 Important signals such as keypad input, entropy generation, OTP generation, UART transmission, OTP verification, and lockout status can be observed during simulation and hardware testing.
 
-Hardware Platform
+## Hardware Platform
 
 FPGA: Xilinx Spartan-7 XC7S50
 HDL: Verilog
